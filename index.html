@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sdotsolutions | Monte Carlo Simulation Apps</title>
+    <meta
+      name="description"
+      content="sdotsolutions builds practical Monte Carlo simulation products including EasyMonte and RetireSimPro."
+    />
+    <style>
+      :root {
+        --brand-navy: #023c69;
+        --brand-gold: #f1d38b;
+        --ink: #0e1f2f;
+        --muted: #44576b;
+        --paper: #fffef9;
+        --card: #ffffff;
+        --accent: #0a5c9b;
+        --shadow: 0 18px 36px rgba(2, 60, 105, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Trebuchet MS", "Franklin Gothic Medium", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 8%, rgba(241, 211, 139, 0.6), transparent 35%),
+          radial-gradient(circle at 90% 12%, rgba(2, 60, 105, 0.16), transparent 30%),
+          linear-gradient(180deg, #fffdf4 0%, #ffffff 42%, #f7fbff 100%);
+        line-height: 1.55;
+      }
+
+      .page {
+        width: min(1120px, 92vw);
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 26px 0 8px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--brand-navy);
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: lowercase;
+      }
+
+      .mark {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--brand-gold), #f7b93f);
+        box-shadow: 0 0 0 5px rgba(241, 211, 139, 0.32);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        gap: 28px;
+        align-items: stretch;
+        padding: 24px 0 34px;
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid rgba(2, 60, 105, 0.09);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: clamp(2rem, 5vw, 3.1rem);
+        line-height: 1.08;
+        color: var(--brand-navy);
+      }
+
+      .sub {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 1.04rem;
+      }
+
+      .kicker {
+        display: inline-block;
+        background: rgba(2, 60, 105, 0.08);
+        color: var(--brand-navy);
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 6px 12px;
+        margin-bottom: 12px;
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .btn {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        padding: 10px 15px;
+        font-weight: 700;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: var(--brand-navy);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(2, 60, 105, 0.3);
+      }
+
+      .btn-secondary {
+        color: var(--brand-navy);
+        border-color: rgba(2, 60, 105, 0.35);
+        background: #fff;
+      }
+
+      .stats {
+        display: grid;
+        gap: 12px;
+      }
+
+      .stat {
+        background: var(--paper);
+        border: 1px solid rgba(2, 60, 105, 0.13);
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--brand-navy);
+        font-size: 1.04rem;
+      }
+
+      .section {
+        padding: 4px 0 24px;
+      }
+
+      h2 {
+        color: var(--brand-navy);
+        margin: 0 0 12px;
+        font-size: clamp(1.4rem, 3.3vw, 2rem);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid rgba(2, 60, 105, 0.13);
+        border-radius: 16px;
+        padding: 18px;
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        color: var(--brand-navy);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .contact {
+        margin-top: 8px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .contact a {
+        color: var(--accent);
+        font-weight: 700;
+        text-decoration: none;
+        width: fit-content;
+      }
+
+      .contact a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        border-top: 1px solid rgba(2, 60, 105, 0.12);
+        margin-top: 20px;
+        padding: 18px 0 28px;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          padding: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="brand"><span class="mark"></span>sdotsolutions</div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <article class="panel">
+            <span class="kicker">Applied Quant Tools</span>
+            <h1>Monte Carlo insights, built for real decisions.</h1>
+            <p class="sub">
+              sdotsolutions develops practical simulation products that make probability,
+              risk, and long-range planning easier to understand.
+            </p>
+            <p class="muted">
+              Our core simulation engine powers both EasyMonte and RetireSimPro, giving users
+              consistent methodology across investing and retirement planning workflows.
+            </p>
+            <div class="buttons">
+              <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.sdot.easymonte" target="_blank" rel="noopener noreferrer">Get EasyMonte on Google Play</a>
+              <a class="btn btn-secondary" href="mailto:sdotsolutionsllc@proton.me?subject=sdotsolutions%20Inquiry">Contact sdotsolutions</a>
+            </div>
+          </article>
+
+          <aside class="panel stats" aria-label="Highlights">
+            <div class="stat">
+              <strong>EasyMonte</strong>
+              On-device Monte Carlo stock simulation with practical outputs and premium guidance.
+            </div>
+            <div class="stat">
+              <strong>RetireSimPro</strong>
+              Retirement scenario modeling built on the same Monte Carlo foundation.
+            </div>
+            <div class="stat">
+              <strong>Shared Engine</strong>
+              One simulation standard across products for consistent assumptions and results.
+            </div>
+          </aside>
+        </section>
+
+        <section class="section">
+          <h2>What We Build</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>Reliable Simulation Core</h3>
+              <p class="muted">
+                A reusable Monte Carlo engine designed for mobile-first financial tools, balancing
+                clarity, speed, and practical accuracy.
+              </p>
+            </article>
+            <article class="card">
+              <h3>User-Focused Experience</h3>
+              <p class="muted">
+                Interfaces built for interpretation, not just output dumps, so users can act on
+                confidence ranges, tail risk, and scenario outcomes.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Consistent Methodology</h3>
+              <p class="muted">
+                EasyMonte and RetireSimPro follow aligned modeling assumptions to keep cross-app
+                insights coherent as the product line grows.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Independent Product Studio</h3>
+              <p class="muted">
+                sdotsolutions is focused on practical quantitative software for individuals and
+                small teams that want transparent tools without enterprise complexity.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section panel" id="contact">
+          <h2>Contact</h2>
+          <p class="muted">
+            For product inquiries, partnership requests, or support routing, contact sdotsolutions:
+          </p>
+          <div class="contact">
+            <a href="mailto:sdotsolutionsllc@proton.me?subject=sdotsolutions%20Inquiry">sdotsolutionsllc@proton.me</a>
+            <a href="https://play.google.com/store/apps/details?id=com.sdot.easymonte" target="_blank" rel="noopener noreferrer">EasyMonte on Google Play</a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div>© <span id="year"></span> sdotsolutions. All rights reserved.</div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
